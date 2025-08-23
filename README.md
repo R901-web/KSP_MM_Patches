@@ -6,3 +6,5 @@ https://forum.kerbalspaceprogram.com/topic/139980-130-community-database-of-modu
 
 The ring textures in the "GPP" folder come from the Minmar Kerbin Rings mod
 https://forum.kerbalspaceprogram.com/topic/190029-112x-minmar-kerbin-rings-242-kopernicus/
+
+To install, just download the repository and paste into the GameData folder
