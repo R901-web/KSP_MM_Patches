@@ -1,0 +1,77 @@
+//For MP tanks
+@PART[*]:HAS[!RESOURCE[LiquidFuel],!RESOURCE[Oxidizer],@RESOURCE[MonoPropellant],!MODULE[ModuleSimpleFuelSwitch]]:FOR[SimpleFuelSwitch]
+{
+	MODULE
+	{
+		name = ModuleSimpleFuelSwitch
+	}
+	// Default Monopropellant
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = monopropellant
+		displayName = MP
+		selectorFieldName = Fuel Type
+		isDefault = true
+		RESOURCE
+		{
+			name = MonoPropellant
+			amount = #$/RESOURCE[MonoPropellant]/amount$
+			maxAmount = #$/RESOURCE[MonoPropellant]/maxAmount$
+		}
+	}
+	// Liquid Fuel Oxidizer 
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = liquid_fuel_oxidizer
+		displayName = LFO
+		selectorFieldName = Fuel Type
+		RESOURCE
+		{
+			name = LiquidFuel
+			amount = #$/RESOURCE[MonoPropellant]/amount$
+			@amount *= 0.45
+			maxAmount = #$/RESOURCE[MonoPropellant]/maxAmount$
+			@maxAmount *= 0.55
+		}
+		RESOURCE
+		{
+			name = Oxidizer
+			amount = #$/RESOURCE[MonoPropellant]/amount$
+			@amount *= 0.55
+			maxAmount = #$/RESOURCE[MonoPropellant]/maxAmount$
+			@maxAmount *= 0.55
+		}
+	}
+	// Liquid Fuel 
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = liquid_fuel
+		displayName = LF
+		selectorFieldName = Fuel Type
+		RESOURCE
+		{
+			name = LiquidFuel
+			amount = #$/RESOURCE[MonoPropellant]/amount$
+			maxAmount = #$/RESOURCE[MonoPropellant]/maxAmount$
+		}
+	}
+	//Structural
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = structural
+		displayName = STR
+		selectorFieldName = Fuel Type
+		RESOURCE
+		{
+			name = ElectricCharge
+			amount = 50
+			maxAmount = 50
+		}
+	}
+	
+	!RESOURCE[MonoPropellant] {}
+}

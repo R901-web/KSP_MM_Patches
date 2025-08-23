@@ -1,0 +1,47 @@
+//For Xe tanks
+@PART[*]:HAS[@RESOURCE[XenonGas],!RESOURCE[ElectricCharge],!MODULE[ModuleSimpleFuelSwitch]]:FOR[SimpleFuelSwitch]
+{
+	MODULE
+	{
+		name = ModuleSimpleFuelSwitch
+	}
+	//Default Xenon
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = xenon
+		displayName = XE
+		selectorFieldName = Fuel Type
+		isDefault = true
+		RESOURCE
+		{
+			name = XenonGas
+			amount = #$/RESOURCE[XenonGas]/amount$
+			maxAmount = #$/RESOURCE[XenonGas]/maxAmount$
+		}
+	}
+	//Xenon + electric
+	MODULE
+	{
+		name = ModuleSwitchableResources
+		resourcesId = xenon_electricity
+		displayName = XLE
+		selectorFieldName = Fuel Type
+		RESOURCE
+		{
+			name = XenonGas
+			amount = #$/RESOURCE[XenonGas]/amount$
+			@amount *= 0.9
+			maxAmount = #$/RESOURCE[XenonGas]/maxAmount$
+			@maxAmount *= 0.9
+		}
+		RESOURCE
+		{
+			name = ElectricCharge
+			amount = #$/RESOURCE[XenonGas]/amount$
+			maxAmount = #$/RESOURCE[XenonGas]/maxAmount$
+		}
+	}
+	
+	!RESOURCE[XenonGas] {}
+}
